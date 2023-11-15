@@ -1,7 +1,6 @@
 import { ArtPiecePreview } from "../ArtPiecePreview/ArtPiecePreview";
 
 export function ArtPieces({ pieces }) {
-  console.log("pieces: ", pieces);
   return (
     <ul>
       {pieces.map((piece) => (
@@ -11,7 +10,6 @@ export function ArtPieces({ pieces }) {
             title={piece.name}
             artist={piece.artist}
           />
-          Hello!
         </li>
       ))}
     </ul>
