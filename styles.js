@@ -11,4 +11,9 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
   }
+
+  img {
+    max-width: 500px;
+    max-height: 300px
+  }
 `;
