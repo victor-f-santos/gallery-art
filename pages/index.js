@@ -2,6 +2,7 @@
 import useSWR from "swr";
 import { ArtPieces } from "@/components/ArtPieces/ArtPieces";
 import { v4 as uuidv4 } from "uuid";
+import { Spotlight } from "@/components/Spotlight/Spotlight";
 
 export default function HomePage() {
   const URL = "https://example-apis.vercel.app/api/art";
@@ -12,12 +13,16 @@ export default function HomePage() {
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>... is loading</div>;
 
-  // const data = fetchingArtPieces();
-
   const artPieces = data.map((artPiece) => ({ id: uuidv4(), ...artPiece }));
-  console.log("artPieces: ", artPieces);
+
+  function getRandomPiece(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+  const randomPiece = getRandomPiece(artPieces);
+
   return (
     <div>
+      <Spotlight image={randomPiece.imageSource} artist={randomPiece.artist} />
       <ArtPieces pieces={artPieces} />
     </div>
   );
