@@ -2,7 +2,7 @@ import { ArtPiecePreview } from "../ArtPiecePreview/ArtPiecePreview";
 
 export function ArtPieces({ pieces }) {
   return (
-    <ul>
+    <ul className="artPieceList">
       {pieces.map((piece) => (
         <li key={piece.id}>
           <ArtPiecePreview
