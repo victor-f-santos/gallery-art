@@ -8,8 +8,8 @@ const mockPiece = {
 
 test("art image is displayed", () => {
   render(<Spotlight image={mockPiece.image} />);
-  const imageElement = screen.getByRole("img");
-  expect(imageElement).toBeInTheDocument();
+  const imageElement = screen.getAllByRole("img");
+  expect(imageElement[0]).toBeInTheDocument();
 });
 test("art piece artist is displayed", () => {
   render(<Spotlight artist={mockPiece.artist} />);

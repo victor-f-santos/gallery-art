@@ -9,6 +9,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const [artPieces,setArtPieces] = useState([]);
+  const [artPiecesInfo,setArtPiecesInfo] = useState([]);
 
   const URL = "https://example-apis.vercel.app/api/art";
 
@@ -27,10 +28,25 @@ export default function App({ Component, pageProps }) {
   if(artPieces.length < 1){
     return
   }
+
+  // const initialArtPiecesInfo = artPieces.map( piece => ({'slug':piece.slug,'isFavourite':false}));
+  function handleToggleFavorite(slug) {
+    setArtPiecesInfo( (artPiecesInfo) => {
+      const info = artPiecesInfo.find( (info) => info.slug === slug );
+    if (info) {
+      return artPiecesInfo.map( (info) =>
+        info.slug === slug ? {...info,isFavorite: !info.isFavorite} : info
+       );
+    }
+    console.log('handleToggleFavourite function with slug:',slug)
+    return [...artPiecesInfo, {slug,isFavorite:true}];
+    })
+  }
+
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} artPieces={artPieces} />
+      <Component {...pageProps} artPieces={artPieces}  artPiecesInfo={artPiecesInfo}  handleToggleFavorite={handleToggleFavorite}/>
       <Layout/>
     </>
   );
