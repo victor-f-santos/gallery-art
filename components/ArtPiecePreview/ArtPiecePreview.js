@@ -2,7 +2,7 @@ import Link from "next/link";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPiecePreview({ image, title, artist, slug ,handleToggleFavorite,artPiecesInfo }) {
-  const artPieceInfo = artPiecesInfo.find( (info) => info.slug===slug )
+  const artPieceInfo = artPiecesInfo?.find( (info) => info.slug===slug )
   return (
     <div>
       <Link href={`/art-pieces/${slug}`}>

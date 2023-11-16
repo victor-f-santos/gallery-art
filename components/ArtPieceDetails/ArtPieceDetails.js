@@ -3,7 +3,7 @@ import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPieceDetails({ image, title, artist, year, genre, slug ,handleToggleFavorite,artPiecesInfo }) {
   console.log('ArtPieceDetails slug: ',slug)
-  let artPieceInfo = artPiecesInfo.find( (info) => info.slug===slug )
+  let artPieceInfo = artPiecesInfo?.find( (info) => info.slug===slug )
   if (!artPieceInfo) {
     artPieceInfo=false
   }

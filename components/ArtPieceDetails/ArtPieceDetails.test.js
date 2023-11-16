@@ -14,8 +14,8 @@ const mockPiece = {
 
 test("The art piece image is displayed", () => {
   render(<ArtPieceDetails image={mockPiece.image} />);
-  const imageElement = screen.getByRole("img");
-  expect(imageElement).toBeInTheDocument();
+  const imageElement = screen.getAllByRole("img");
+  expect(imageElement[0]).toBeInTheDocument();
 });
 test("The art piece title is displayed", () => {
   render(<ArtPieceDetails title={mockPiece.name} />);
