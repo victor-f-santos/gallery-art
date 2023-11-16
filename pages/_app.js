@@ -31,8 +31,16 @@ export default function App({ Component, pageProps }) {
 
   // const initialArtPiecesInfo = artPieces.map( piece => ({'slug':piece.slug,'isFavourite':false}));
   function handleToggleFavorite(slug) {
-    console.log('handleToggleFavourite function with slug:',slug);
-    // setArtPiecesInfo()
+    setArtPiecesInfo( (artPiecesInfo) => {
+      const info = artPiecesInfo.find( (info) => info.slug === slug );
+    if (info) {
+      return artPiecesInfo.map( (info) =>
+        info.slug === slug ? {...info,isFavorite: !info.isFavorite} : info
+       );
+    }
+    console.log('handleToggleFavourite function with slug:',slug)
+    return [...artPiecesInfo, {slug,isFavorite:true}];
+    })
   }
 
   return (
