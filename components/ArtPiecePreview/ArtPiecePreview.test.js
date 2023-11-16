@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { ArtPiecePreview } from "./ArtPiecePreview";
+import ArtPiecePreview from "./ArtPiecePreview";
 
 const mockPiece = {
   image: "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg",
