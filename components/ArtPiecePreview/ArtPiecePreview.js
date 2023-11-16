@@ -1,9 +1,15 @@
-export function ArtPiecePreview({ image, title, artist }) {
+import Link from "next/link";
+
+export default function ArtPiecePreview({ image, title, artist, slug }) {
   return (
     <div>
-      <img src={image}></img>
-      {title}
-      {artist}
+      <Link href={`/art-pieces/${slug}`}>
+        <img src={image} alt={title}></img>
+      </Link>
+      <p>
+        {title}
+        {artist}
+      </p>
     </div>
   );
 }

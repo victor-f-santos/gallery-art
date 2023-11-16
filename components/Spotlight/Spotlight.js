@@ -1,4 +1,4 @@
-export function Spotlight({ image, artist }) {
+export default function Spotlight({ image, artist }) {
   return (
     <div>
       <img src={image}></img>
