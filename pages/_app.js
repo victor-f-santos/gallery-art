@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
+import Layout from "@/components/Layout/Layout";
+
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
@@ -28,6 +31,7 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <Component {...pageProps} artPieces={artPieces} />
+      <Layout/>
     </>
   );
 }
