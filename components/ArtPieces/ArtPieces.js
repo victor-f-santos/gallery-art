@@ -1,6 +1,6 @@
-import { ArtPiecePreview } from "../ArtPiecePreview/ArtPiecePreview";
+import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 
-export function ArtPieces({ pieces }) {
+export default function ArtPieces({ pieces }) {
   return (
     <ul>
       {pieces.map((piece) => (
@@ -9,6 +9,7 @@ export function ArtPieces({ pieces }) {
             image={piece.imageSource}
             title={piece.name}
             artist={piece.artist}
+            slug={piece.slug}
           />
         </li>
       ))}
