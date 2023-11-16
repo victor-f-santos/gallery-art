@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import ArtPieceDetails from "./ArtPieceDetails";
+import Link from "next/link";
 
 const mockPiece = {
   imageSource:
@@ -37,4 +38,9 @@ test("The art piece genre is displayed", () => {
   render(<ArtPieceDetails genre={mockPiece.genre} />);
   const genreElement = screen.getByText("Abstract Painting");
   expect(genreElement).toBeInTheDocument();
+});
+test("The button is displayed", () => {
+  render(<ArtPieceDetails />);
+  const button = screen.getByRole("button");
+  expect(button).toBeInTheDocument();
 });
