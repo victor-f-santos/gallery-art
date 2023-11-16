@@ -1,6 +1,7 @@
 import Link from "next/link";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-export default function ArtPiecePreview({ image, title, artist, slug }) {
+export default function ArtPiecePreview({ image, title, artist, slug ,handleToggleFavorite }) {
   return (
     <div>
       <Link href={`/art-pieces/${slug}`}>
@@ -10,6 +11,7 @@ export default function ArtPiecePreview({ image, title, artist, slug }) {
         {title}
         {artist}
       </p>
+      <FavoriteButton isFavorite={true} onToggleFavorite={handleToggleFavorite}/>
     </div>
   );
 }
