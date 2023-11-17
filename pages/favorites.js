@@ -1,6 +1,9 @@
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
 
-export default function FavoritesPage({ artPiecesInfo, artPieces }) {
+export default function FavoritesPage({ 
+  artPiecesInfo,
+  artPieces,
+  handleToggleFavorite }) {
   const favoritePiecesInfos = artPiecesInfo.filter((info) => info.isFavorite);
   const filteredArray = artPieces.filter((artPiece) => {
     return favoritePiecesInfos.find(
@@ -9,7 +12,7 @@ export default function FavoritesPage({ artPiecesInfo, artPieces }) {
   });
   return (
     <>
-      <ArtPieces pieces={filteredArray} />
+      <ArtPieces pieces={filteredArray} artPiecesInfo={artPiecesInfo} handleToggleFavorite={handleToggleFavorite}/>
     </>
   );
 }
