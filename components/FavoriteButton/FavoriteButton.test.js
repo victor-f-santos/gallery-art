@@ -46,13 +46,7 @@ test('The favorite-button is displayed in the details view',()=>{
 test('Clicking the favorite-button on a non-favorite piece saves it as a favorite',async()=>{
   const mockPiece = {'slug':'slug-name'}
 
-  let mockPiecesInfo = [{
-    'slug':'slug-name',
-    'isFavorite':false
-  },{
-    'slug':'another-slug-name',
-    'isFavorite':true
-  }]
+  let mockPiecesInfo = []
   
   const user = userEvent.setup()
   function handleToggleFavorite(slug) {
