@@ -1,5 +1,4 @@
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPieces({
   pieces,
