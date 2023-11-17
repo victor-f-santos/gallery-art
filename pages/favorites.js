@@ -13,5 +13,3 @@ export default function FavoritesPage({ artPiecesInfo, artPieces }) {
     </>
   );
 }
-
-// pieces, artPiecesInfo, handleToggleFavorite
