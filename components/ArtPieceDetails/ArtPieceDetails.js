@@ -1,13 +1,13 @@
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import CommentForm from "../CommentForm/CommentForm";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre, slug ,handleToggleFavorite,artPiecesInfo }) {
-  console.log('ArtPieceDetails slug: ',slug)
+export default function ArtPieceDetails({ image, title, artist, year, genre, slug ,handleToggleFavorite,artPiecesInfo,handleSubmitComment }) {
   let artPieceInfo = artPiecesInfo?.find( (info) => info.slug===slug )
-  if (!artPieceInfo) {
-    artPieceInfo=false
-  }
-  console.log(artPieceInfo);
+  // if (!artPieceInfo) {
+  //   artPieceInfo=false
+  // }
+
   return (
     <>
       <Link href="/art-pieces/">
@@ -21,6 +21,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre, slu
         {genre}
       </p>
       <FavoriteButton isFavorite={artPieceInfo?.isFavorite} onToggleFavorite={handleToggleFavorite} slug={slug}/>
+      <CommentForm onSubmitComment={handleSubmitComment} slug={slug}/>
     </>
   );
 }

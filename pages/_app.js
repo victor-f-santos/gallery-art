@@ -42,6 +42,11 @@ export default function App({ Component, pageProps }) {
     });
   }
 
+  function handleSubmitComment(slug) { 
+
+    console.log('handle submit',slug);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -50,6 +55,7 @@ export default function App({ Component, pageProps }) {
         artPieces={artPieces}
         artPiecesInfo={artPiecesInfo}
         handleToggleFavorite={handleToggleFavorite}
+        handleSubmitComment={handleSubmitComment}
       />
       <Layout />
     </>
