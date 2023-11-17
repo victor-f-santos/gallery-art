@@ -1,8 +1,11 @@
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-export default function ArtPieces({ pieces, artPiecesInfo, handleToggleFavorite }) {
-  
+export default function ArtPieces({
+  pieces,
+  artPiecesInfo,
+  handleToggleFavorite,
+}) {
   return (
     <ul>
       {pieces.map((piece) => (

@@ -6,10 +6,12 @@ export default function SpotlightPage({
   handleToggleFavorite,
   artPiecesInfo,
 }) {
+
   const [randomPiece, setRandomPiece] = useState({});
   useEffect(() => {
     setRandomPiece(getRandomPiece(artPieces));
   }, []);
+
   function getRandomPiece(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
