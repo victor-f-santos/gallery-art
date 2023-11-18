@@ -42,6 +42,34 @@ export default function App({ Component, pageProps }) {
     });
   }
 
+  function handleSubmitComment(newCommentInfo) { 
+    const info = artPiecesInfo.find((info) => info.slug === newCommentInfo.slug);
+    let newArtPiecesInfoState = []
+    if (info) {
+      const isCommented = Boolean(info.comments)
+      if (isCommented) {
+        newArtPiecesInfoState = artPiecesInfo.map( info => (
+          {...info,
+          'comments':[...info.comments,{'comment':newCommentInfo.comment,time:newCommentInfo.time,date:newCommentInfo.date}
+          ]}))
+      }
+      if (!isCommented) {
+        newArtPiecesInfoState = artPiecesInfo.map( info => (
+          {...info,
+          'comments':[{'comment':newCommentInfo.comment,time:newCommentInfo.time, date:newCommentInfo.date}
+        ]}))
+      }
+    }
+    if (info===undefined) {
+      newArtPiecesInfoState = [...artPiecesInfo,
+        {'slug':newCommentInfo.slug,
+        'comments':
+          [{'comment':newCommentInfo.comment,date:newCommentInfo.date}
+        ]}]
+    }
+    setArtPiecesInfo(newArtPiecesInfoState)
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -50,6 +78,7 @@ export default function App({ Component, pageProps }) {
         artPieces={artPieces}
         artPiecesInfo={artPiecesInfo}
         handleToggleFavorite={handleToggleFavorite}
+        handleSubmitComment={handleSubmitComment}
       />
       <Layout />
     </>
