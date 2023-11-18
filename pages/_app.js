@@ -56,8 +56,8 @@ export default function App({ Component, pageProps }) {
       if (!isCommented) {
         newArtPiecesInfoState = artPiecesInfo.map( info => (
           {...info,
-          'comments':[{'comment':newCommentInfo.comment,time:newCommentInfo.time, date:newCommentInfo.date}]
-          }))
+          'comments':[{'comment':newCommentInfo.comment,time:newCommentInfo.time, date:newCommentInfo.date}
+        ]}))
       }
     }
     if (info===undefined) {
