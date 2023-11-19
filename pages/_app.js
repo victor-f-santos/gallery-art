@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }) {
               comment: newCommentInfo.comment,
               time: newCommentInfo.time,
               date: newCommentInfo.date,
-            },
+          }
           ],
         }));
       }
