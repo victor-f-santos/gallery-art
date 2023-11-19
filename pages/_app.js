@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }) {
       newArtPiecesInfoState = [...artPiecesInfo,
         {'slug':newCommentInfo.slug,
         'comments':
-          [{'comment':newCommentInfo.comment,date:newCommentInfo.date}
+          [{'comment':newCommentInfo.comment,time:newCommentInfo.time,date:newCommentInfo.date}
         ]}]
     }
     setArtPiecesInfo(newArtPiecesInfoState)
