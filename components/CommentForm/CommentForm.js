@@ -30,7 +30,7 @@ function formattedCurrentDateAndTime() {
     const month = months[monthNum]
     const day = date.getDate();
     const year = date.getFullYear();
-    const hour = date.getHours()
-    const minute = date.getMinutes()
-    return [`${month} ${day} ${year}`, `${hour}:${minute}`];
+    const hour = String(date.getHours())
+    const minute = String(date.getMinutes())
+    return [`${month} ${day} ${year}`, `${hour.length===1 ? 0+hour : hour}:${minute.length===1 ? 0+minute : minute}`];
 }

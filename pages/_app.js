@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }) {
         {
           slug: newCommentInfo.slug,
           comments: [
-            { comment: newCommentInfo.comment, date: newCommentInfo.date },
+            { comment: newCommentInfo.comment,time:newCommentInfo.time, date: newCommentInfo.date },
           ],
         },
       ];
