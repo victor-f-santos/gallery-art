@@ -15,6 +15,7 @@ export default function ArtPieceDetailsPage({ artPieces , handleToggleFavorite,a
         year={piece.year}
         genre={piece.genre}
         slug={piece.slug}
+        colors={piece.colors}
         handleToggleFavorite={handleToggleFavorite}
         artPiecesInfo={artPiecesInfo}
         handleSubmitComment={handleSubmitComment}
