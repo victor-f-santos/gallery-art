@@ -3,12 +3,18 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import Layout from "@/components/Layout/Layout";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useState([]);
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: [],
+    }
+  );
 
   const URL = "https://example-apis.vercel.app/api/art";
 
@@ -42,32 +48,51 @@ export default function App({ Component, pageProps }) {
     });
   }
 
-  function handleSubmitComment(newCommentInfo) { 
-    const info = artPiecesInfo.find((info) => info.slug === newCommentInfo.slug);
-    let newArtPiecesInfoState = []
+  function handleSubmitComment(newCommentInfo) {
+    const info = artPiecesInfo.find(
+      (info) => info.slug === newCommentInfo.slug
+    );
+    let newArtPiecesInfoState = [];
     if (info) {
-      const isCommented = Boolean(info.comments)
+      const isCommented = Boolean(info.comments);
       if (isCommented) {
-        newArtPiecesInfoState = artPiecesInfo.map( info => (
-          {...info,
-          'comments':[...info.comments,{'comment':newCommentInfo.comment,time:newCommentInfo.time,date:newCommentInfo.date}
-          ]}))
+        newArtPiecesInfoState = artPiecesInfo.map((info) => ({
+          ...info,
+          comments: [
+            ...info.comments,
+            {
+              comment: newCommentInfo.comment,
+              time: newCommentInfo.time,
+              date: newCommentInfo.date,
+            },
+          ],
+        }));
       }
       if (!isCommented) {
-        newArtPiecesInfoState = artPiecesInfo.map( info => (
-          {...info,
-          'comments':[{'comment':newCommentInfo.comment,time:newCommentInfo.time, date:newCommentInfo.date}
-        ]}))
+        newArtPiecesInfoState = artPiecesInfo.map((info) => ({
+          ...info,
+          comments: [
+            {
+              comment: newCommentInfo.comment,
+              time: newCommentInfo.time,
+              date: newCommentInfo.date,
+            },
+          ],
+        }));
       }
     }
-    if (info===undefined) {
-      newArtPiecesInfoState = [...artPiecesInfo,
-        {'slug':newCommentInfo.slug,
-        'comments':
-          [{'comment':newCommentInfo.comment,date:newCommentInfo.date}
-        ]}]
+    if (info === undefined) {
+      newArtPiecesInfoState = [
+        ...artPiecesInfo,
+        {
+          slug: newCommentInfo.slug,
+          comments: [
+            { comment: newCommentInfo.comment, date: newCommentInfo.date },
+          ],
+        },
+      ];
     }
-    setArtPiecesInfo(newArtPiecesInfoState)
+    setArtPiecesInfo(newArtPiecesInfoState);
   }
 
   return (
