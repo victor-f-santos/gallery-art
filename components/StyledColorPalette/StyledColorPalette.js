@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const StyledBox = styled.p`
+const StyledBox = styled.li`
     color:white;
     outline-color: black;
     background-color:${ ({$bgcolor}) =>($bgcolor) };
@@ -10,8 +10,9 @@ const StyledBox = styled.p`
     justify-content: center;
     align-items: center;
 `
-const FlexContainer = styled.section`
+const FlexContainer = styled.ul`
     display:flex;
+    list-style-type: none;
 `
 
 export default function StyledColorPalette({colors}) {
