@@ -5,8 +5,8 @@ export default function Comments ({comments}) {
     return (
         <> 
         <h3>Comments:</h3>
-        { Boolean(commentsWithID)===false ? (<p>Be the first to leave a comment!</p>) :
-         (commentsWithID.map( comment => <p key={comment.id}>{comment.comment}, {comment.time} {comment.date}</p>))
+        { Boolean(commentsWithID)===false ? (<li>Be the first to leave a comment!</li>) :
+         (commentsWithID.map( comment => <li key={comment.id}>{comment.comment}, {comment.time} {comment.date}</li>))
         }
         </>
     );

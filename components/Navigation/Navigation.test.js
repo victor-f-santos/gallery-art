@@ -3,18 +3,24 @@ import Navigation from "./Navigation";
 
 test("Navigation link labeled Spotlight is displayed", () => {
   render(<Navigation />);
-  const links = screen.getAllByRole("link");
-  expect(links[0]).toHaveTextContent("Spotlight");
+  const link = screen.getByRole('link', {
+    name: 'Spotlight'
+  })
+  expect(link).toBeInTheDocument()
 });
 
 test("Navigation link labeled Pieces is displayed", () => {
   render(<Navigation />);
-  const links = screen.getAllByRole("link");
-  expect(links[1]).toHaveTextContent("Pieces");
+  const link = screen.getByRole('link', {
+    name: 'Pieces'
+  })
+  expect(link).toBeInTheDocument()
 });
 
 test("Navigation link labeled Favorites is displayed", () => {
   render(<Navigation />);
-  const links = screen.getAllByRole("link");
-  expect(links[2]).toHaveTextContent("Favorites");
+  const link = screen.getByRole('link', {
+    name: 'Favorites'
+  })
+  expect(link).toBeInTheDocument()
 });
