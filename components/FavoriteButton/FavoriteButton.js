@@ -3,6 +3,7 @@ import Image from "next/image";
 export default function FavoriteButton({ isFavorite, onToggleFavorite, slug }) {
   return (
     <Image
+      className="favBut"
       onClick={() => onToggleFavorite(slug)}
       src={`/heart${isFavorite ? "_filled" : ""}.svg`}
       alt="Favorite Button"
