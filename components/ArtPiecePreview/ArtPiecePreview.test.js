@@ -8,9 +8,9 @@ const mockPiece = {
 };
 
 test("Each art piece image is displayed", () => {
-  render(<ArtPiecePreview image={mockPiece.image} />);
-  const imageElement = screen.getAllByRole("img");
-  expect(imageElement[0]).toBeInTheDocument();
+  render(<ArtPiecePreview image={mockPiece.image} title={mockPiece.title} />);
+  const imageElement = screen.getByRole('img',{name:"whatever name"} );
+  expect(imageElement).toBeInTheDocument();
 });
 test("Each art piece title is displayed", () => {
   render(<ArtPiecePreview title={mockPiece.title} />);

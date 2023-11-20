@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
 import ArtPieceDetails from "./ArtPieceDetails";
-import Link from "next/link";
 
 const mockPiece = {
   imageSource:
@@ -13,9 +12,9 @@ const mockPiece = {
 };
 
 test("The art piece image is displayed", () => {
-  render(<ArtPieceDetails image={mockPiece.image} />);
-  const imageElement = screen.getAllByRole("img");
-  expect(imageElement[0]).toBeInTheDocument();
+  render(<ArtPieceDetails image={mockPiece.image} title={mockPiece.name} />);
+  const imageElement = screen.getByRole("img",{name:"Orange Red and Green Abstract Painting"});
+  expect(imageElement).toBeInTheDocument();
 });
 test("The art piece title is displayed", () => {
   render(<ArtPieceDetails title={mockPiece.name} />);
@@ -39,8 +38,8 @@ test("The art piece genre is displayed", () => {
   const genreElement = screen.getByText("Abstract Painting");
   expect(genreElement).toBeInTheDocument();
 });
-test("The button is displayed", () => {
+test("The return button is displayed", () => {
   render(<ArtPieceDetails />);
-  const button = screen.getByRole("button");
+  const button = screen.getByRole("button", {name: 'Return'});
   expect(button).toBeInTheDocument();
 });

@@ -22,15 +22,12 @@ const mockPieces = [
 
 test('The favorite-button is displayed in the spotlight view',() => {
   render(<Spotlight />)
-  const images = screen.getAllByRole('img')
-  const favButton = images.find(image => image.alt==='Favorite Button')
+  const favButton = screen.getByAltText('Favorite Button')
   expect(favButton).toBeInTheDocument()
 })
 test('The favorite-button is displayed in each entry in the list view',()=>{
   render(<ArtPieces pieces={mockPieces}/>)
-  const images = screen.getAllByRole('img')
-  console.log(images);
-  const favButtons = images.filter(image => image.alt==='Favorite Button')
+  const favButtons = screen.getAllByAltText('Favorite Button')
   expect(favButtons[0]).toBeInTheDocument()
   expect(favButtons[1]).toBeInTheDocument()
   expect(favButtons[2]).toBeInTheDocument()
@@ -38,8 +35,7 @@ test('The favorite-button is displayed in each entry in the list view',()=>{
 })
 test('The favorite-button is displayed in the details view',()=>{
   render(<ArtPieceDetails/>)
-  const images = screen.getAllByRole('img')
-  const favButton = images.find(image => image.alt='Favorite Button')
+  const favButton = screen.getByAltText('Favorite Button')
   expect(favButton).toBeInTheDocument()
 })
 
